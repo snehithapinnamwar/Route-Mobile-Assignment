@@ -1,0 +1,183 @@
+{
+  "info": {
+    "_postman_id": "499ae839-c6eb-47c0-83f2-8ecf4f7071f2",
+    "name": "RouteMobile Assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55481311",
+    "_collection_link": "https://go.postman.co/collection/55481311-499ae839-c6eb-47c0-83f2-8ecf4f7071f2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Item_Upload",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"item\":\"laptop\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Item_Upload",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"item\":\"laptop\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:5000/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                ""
+              ]
+            }
+          },
+          "status": "ACCEPTED",
+          "code": 202,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.13.7"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Jul 2026 05:59:29 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "102"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 8,\n    \"item\": \"laptop\",\n    \"message\": \"Item accepted for processing\",\n    \"status\": \"pending\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Concurrent Requests",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5000/delay?delay_value=2",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "delay"
+          ],
+          "query": [
+            {
+              "key": "delay_value",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Concurrent Requests",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://127.0.0.1:5000/delay?delay_value=2",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "5000",
+              "path": [
+                "delay"
+              ],
+              "query": [
+                {
+                  "key": "delay_value",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.8 Python/3.13.7"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 06 Jul 2026 06:00:02 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Length",
+              "value": "68"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"delay_value\": 2,\n    \"requests_made\": 5,\n    \"time_taken\": 11.57\n}"
+        }
+      ]
+    }
+  ]
+}
