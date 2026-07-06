@@ -14,36 +14,6 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
-
-def publish_to_rabbitmq(item_id, item_name):
-    try:
-        connection = pika.BlockingConnection(
-            pika.ConnectionParameters(host=Config.RABBITMQ_HOST)
-        )
-        channel = connection.channel()
-        channel.queue_declare(queue=Config.RABBITMQ_QUEUE, durable=True)
-        
-        message = json.dumps({
-            'item_id': item_id,
-            'item': item_name
-        })
-        
-        channel.basic_publish(
-            exchange='',
-            routing_key=Config.RABBITMQ_QUEUE,
-            body=message,
-            properties=pika.BasicProperties(
-                delivery_mode=2, 
-            )
-        )
-        connection.close()
-        return True
-    
-    except Exception as e:
-        print(f"Error publishing to RabbitMQ: {e}")
-        return False
-
-
 @app.route("/", methods=["POST"])
 def create_item():
     try:
@@ -58,7 +28,7 @@ def create_item():
         db.session.add(item)
         db.session.commit()
         
-        publish_to_rabbitmq(item.id, item_name)
+        process_item_task.delay(item.id, item.item)
         
         return jsonify({
             "message": "Item accepted for processing",
