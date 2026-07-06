@@ -82,7 +82,7 @@ python app.py
 ### Terminal 2 – Start the RabbitMQ Consumer
 
 ```bash
-python celery_worker.py
+python -m celery -A tasks.celery_app worker --pool=solo --loglevel=info
 ```
 
 ---
