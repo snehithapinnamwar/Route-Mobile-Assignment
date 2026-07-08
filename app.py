@@ -42,7 +42,6 @@ def create_item():
 
 
 def make_request(delay_value):
-    """Make a GET request to httpbin with delay"""
     try:
         url = f"https://httpbin.org/delay/{delay_value}"
         response = requests.get(url, timeout=delay_value + 5)
@@ -54,10 +53,6 @@ def make_request(delay_value):
 
 @app.route("/delay", methods=["GET"])
 def process_concurrent_requests():
-    """
-    Endpoint: GET /?delay_value=2
-    Makes 5 concurrent requests to httpbin.org/delay/{delay_value}
-    """
     try:
         delay_value = request.args.get('delay_value')
         
